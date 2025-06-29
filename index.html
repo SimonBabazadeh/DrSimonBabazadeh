@@ -1,19 +1,696 @@
-<!doctype html>
-<html>
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<title>My static Space</title>
-		<link rel="stylesheet" href="style.css" />
-	</head>
-	<body>
-		<div class="card">
-			<h1>Welcome to your static Space!</h1>
-			<p>You can modify this app directly by editing <i>index.html</i> in the Files and versions tab.</p>
-			<p>
-				Also don't forget to check the
-				<a href="https://huggingface.co/docs/hub/spaces" target="_blank">Spaces documentation</a>.
-			</p>
-		</div>
-	</body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Simon Babazadeh - Professional Dental CV</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .hero-gradient {
+            background: linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 50%, #80deea 100%);
+        }
+        .treatment-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .course-card:hover .course-icon {
+            transform: scale(1.1);
+        }
+        .timeline-item:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            left: 24px;
+            top: 32px;
+            height: calc(100% - 32px);
+            width: 2px;
+            background: #4dd0e1;
+        }
+        .animate-float {
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-3">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-4">
+                    <i class="fas fa-tooth text-3xl text-blue-400"></i>
+                    <span class="text-xl font-bold text-gray-800">Dr. Simon Babazadeh</span>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#about" class="text-gray-700 hover:text-blue-500 transition">About</a>
+                    <a href="#treatments" class="text-gray-700 hover:text-blue-500 transition">Treatments</a>
+                    <a href="#courses" class="text-gray-700 hover:text-blue-500 transition">Courses</a>
+                    <a href="#experience" class="text-gray-700 hover:text-blue-500 transition">Experience</a>
+                    <a href="#contact" class="bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600 transition">Contact</a>
+                </div>
+                <button class="md:hidden focus:outline-none" id="menu-toggle">
+                    <i class="fas fa-bars text-2xl text-gray-700"></i>
+                </button>
+            </div>
+            <!-- Mobile menu -->
+            <div class="md:hidden hidden mt-4" id="mobile-menu">
+                <a href="#about" class="block py-2 text-gray-700 hover:text-blue-500">About</a>
+                <a href="#treatments" class="block py-2 text-gray-700 hover:text-blue-500">Treatments</a>
+                <a href="#courses" class="block py-2 text-gray-700 hover:text-blue-500">Courses</a>
+                <a href="#experience" class="block py-2 text-gray-700 hover:text-blue-500">Experience</a>
+                <a href="#contact" class="block mt-2 bg-blue-500 text-white px-4 py-2 rounded-full text-center hover:bg-blue-600">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-gradient py-20">
+        <div class="container mx-auto px-6 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-10 md:mb-0">
+                <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">Dr. Simon Babazadeh, DDS</h1>
+                <p class="text-xl text-gray-700 mb-8">Cosmetic & Restorative Dentistry Specialist with 10+ years of experience creating beautiful, healthy smiles.</p>
+                <div class="flex space-x-4">
+                    <a href="#contact" class="bg-blue-500 text-white px-6 py-3 rounded-full hover:bg-blue-600 transition">Book Consultation</a>
+                    <a href="#treatments" class="border-2 border-blue-500 text-blue-500 px-6 py-3 rounded-full hover:bg-blue-50 transition">View Treatments</a>
+                </div>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+                <div class="relative">
+                    <img src="YOUR_NEW_IMAGE_URL_HERE" alt="Dr. Simon Babazadeh" class="rounded-full w-64 h-64 md:w-80 md:h-80 object-cover border-8 border-white shadow-xl animate-float">
+                    <div class="absolute -bottom-5 -right-5 bg-white p-4 rounded-full shadow-lg">
+                        <i class="fas fa-award text-3xl text-yellow-400"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">About Me</h2>
+                <div class="w-20 h-1 bg-blue-500 mx-auto"></div>
+            </div>
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
+                    <p class="text-gray-700 mb-6 leading-relaxed">I am a passionate dentist dedicated to providing exceptional dental care with a gentle touch. My philosophy centers around patient education and preventive care to help patients maintain optimal oral health throughout their lives.</p>
+                    <p class="text-gray-700 mb-6 leading-relaxed">After graduating with honors from Harvard School of Dental Medicine, I completed advanced training in cosmetic dentistry at the prestigious Las Vegas Institute for Advanced Dental Studies.</p>
+                    <div class="flex flex-wrap gap-4">
+                        <div class="bg-blue-50 px-4 py-2 rounded-full flex items-center">
+                            <i class="fas fa-check-circle text-blue-500 mr-2"></i>
+                            <span>15+ Years Experience</span>
+                        </div>
+                        <div class="bg-blue-50 px-4 py-2 rounded-full flex items-center">
+                            <i class="fas fa-check-circle text-blue-500 mr-2"></i>
+                            <span>5000+ Happy Patients</span>
+                        </div>
+                        <div class="bg-blue-50 px-4 py-2 rounded-full flex items-center">
+                            <i class="fas fa-check-circle text-blue-500 mr-2"></i>
+                            <span>ADA Certified</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <div class="bg-gray-100 p-8 rounded-xl">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-6">Professional Skills</h3>
+                        <div class="space-y-6">
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-gray-700">Cosmetic Dentistry</span>
+                                    <span class="text-blue-500">95%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-blue-500 h-2 rounded-full" style="width: 95%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-gray-700">Dental Implants</span>
+                                    <span class="text-blue-500">90%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-blue-500 h-2 rounded-full" style="width: 90%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-gray-700">Orthodontics</span>
+                                    <span class="text-blue-500">85%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-blue-500 h-2 rounded-full" style="width: 85%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-2">
+                                    <span class="text-gray-700">Pediatric Dentistry</span>
+                                    <span class="text-blue-500">88%</span>
+                                </div>
+                                <div class="w-full bg-gray-200 rounded-full h-2">
+                                    <div class="bg-blue-500 h-2 rounded-full" style="width: 88%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Treatments Section -->
+    <section id="treatments" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Specialized Treatments</h2>
+                <div class="w-20 h-1 bg-blue-500 mx-auto"></div>
+                <p class="text-gray-600 mt-4 max-w-2xl mx-auto">Comprehensive dental care tailored to your unique needs and goals</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Treatment 1 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-md treatment-card transition duration-300">
+                    <div class="h-48 bg-blue-100 flex items-center justify-center">
+                        <i class="fas fa-tooth text-6xl text-blue-500"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-3">Teeth Whitening</h3>
+                        <p class="text-gray-600 mb-4">Professional-grade whitening treatments that can brighten your smile by up to 8 shades in a single visit.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-blue-500 font-medium">From $299</span>
+                            <button class="text-blue-500 hover:text-blue-700">
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Treatment 2 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-md treatment-card transition duration-300">
+                    <div class="h-48 bg-green-100 flex items-center justify-center">
+                        <i class="fas fa-teeth text-6xl text-green-500"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-3">Dental Implants</h3>
+                        <p class="text-gray-600 mb-4">Permanent solution for missing teeth that look, feel, and function like natural teeth.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-blue-500 font-medium">From $1,999</span>
+                            <button class="text-blue-500 hover:text-blue-700">
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Treatment 3 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-md treatment-card transition duration-300">
+                    <div class="h-48 bg-purple-100 flex items-center justify-center">
+                        <i class="fas fa-teeth-open text-6xl text-purple-500"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-3">Invisalign</h3>
+                        <p class="text-gray-600 mb-4">Clear aligner therapy that straightens teeth without metal braces, nearly invisible.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-blue-500 font-medium">From $3,500</span>
+                            <button class="text-blue-500 hover:text-blue-700">
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Treatment 4 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-md treatment-card transition duration-300">
+                    <div class="h-48 bg-yellow-100 flex items-center justify-center">
+                        <i class="fas fa-crown text-6xl text-yellow-500"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-3">Porcelain Veneers</h3>
+                        <p class="text-gray-600 mb-4">Custom-made shells that cover the front surface of teeth to improve appearance.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-blue-500 font-medium">From $999/tooth</span>
+                            <button class="text-blue-500 hover:text-blue-700">
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Treatment 5 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-md treatment-card transition duration-300">
+                    <div class="h-48 bg-red-100 flex items-center justify-center">
+                        <i class="fas fa-teeth text-6xl text-red-500"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-3">Root Canal Therapy</h3>
+                        <p class="text-gray-600 mb-4">Saves infected or damaged teeth by removing the pulp and sealing the tooth.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-blue-500 font-medium">From $899</span>
+                            <button class="text-blue-500 hover:text-blue-700">
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Treatment 6 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-md treatment-card transition duration-300">
+                    <div class="h-48 bg-indigo-100 flex items-center justify-center">
+                        <i class="fas fa-tooth text-6xl text-indigo-500"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-3">Dental Crowns</h3>
+                        <p class="text-gray-600 mb-4">Tooth-shaped caps placed over damaged teeth to restore shape, size and strength.</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-blue-500 font-medium">From $799</span>
+                            <button class="text-blue-500 hover:text-blue-700">
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section id="courses" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Professional Development</h2>
+                <div class="w-20 h-1 bg-blue-500 mx-auto"></div>
+                <p class="text-gray-600 mt-4 max-w-2xl mx-auto">Continuing education and specialized training to provide the latest in dental care</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Course 1 -->
+                <div class="bg-gray-50 rounded-xl p-6 course-card transition duration-300">
+                    <div class="bg-blue-100 w-16 h-16 rounded-full flex items-center justify-center mb-4 course-icon transition duration-300">
+                        <i class="fas fa-graduation-cap text-blue-500 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Advanced Cosmetic Dentistry</h3>
+                    <p class="text-gray-600 mb-4">Las Vegas Institute for Advanced Dental Studies, 2018</p>
+                    <p class="text-gray-700">Mastered advanced techniques in smile design, porcelain veneers, and full-mouth rehabilitation.</p>
+                </div>
+                
+                <!-- Course 2 -->
+                <div class="bg-gray-50 rounded-xl p-6 course-card transition duration-300">
+                    <div class="bg-green-100 w-16 h-16 rounded-full flex items-center justify-center mb-4 course-icon transition duration-300">
+                        <i class="fas fa-certificate text-green-500 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Implantology Certification</h3>
+                    <p class="text-gray-600 mb-4">International Congress of Oral Implantologists, 2016</p>
+                    <p class="text-gray-700">Comprehensive training in surgical placement and restoration of dental implants.</p>
+                </div>
+                
+                <!-- Course 3 -->
+                <div class="bg-gray-50 rounded-xl p-6 course-card transition duration-300">
+                    <div class="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mb-4 course-icon transition duration-300">
+                        <i class="fas fa-book text-purple-500 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Invisalign Master Program</h3>
+                    <p class="text-gray-600 mb-4">Align Technology, 2019</p>
+                    <p class="text-gray-700">Advanced training in clear aligner therapy and complex orthodontic cases.</p>
+                </div>
+                
+                <!-- Course 4 -->
+                <div class="bg-gray-50 rounded-xl p-6 course-card transition duration-300">
+                    <div class="bg-yellow-100 w-16 h-16 rounded-full flex items-center justify-center mb-4 course-icon transition duration-300">
+                        <i class="fas fa-flask text-yellow-500 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Laser Dentistry</h3>
+                    <p class="text-gray-600 mb-4">Academy of Laser Dentistry, 2020</p>
+                    <p class="text-gray-700">Certification in soft and hard tissue laser applications for minimally invasive procedures.</p>
+                </div>
+                
+                <!-- Course 5 -->
+                <div class="bg-gray-50 rounded-xl p-6 course-card transition duration-300">
+                    <div class="bg-red-100 w-16 h-16 rounded-full flex items-center justify-center mb-4 course-icon transition duration-300">
+                        <i class="fas fa-heartbeat text-red-500 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Sedation Dentistry</h3>
+                    <p class="text-gray-600 mb-4">DOCS Education, 2017</p>
+                    <p class="text-gray-700">Training in oral sedation techniques to provide comfortable care for anxious patients.</p>
+                </div>
+                
+                <!-- Course 6 -->
+                <div class="bg-gray-50 rounded-xl p-6 course-card transition duration-300">
+                    <div class="bg-indigo-100 w-16 h-16 rounded-full flex items-center justify-center mb-4 course-icon transition duration-300">
+                        <i class="fas fa-brain text-indigo-500 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">TMJ & Sleep Disorders</h3>
+                    <p class="text-gray-600 mb-4">Pankey Institute, 2021</p>
+                    <p class="text-gray-700">Advanced training in diagnosis and treatment of TMJ disorders and sleep-related breathing issues.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Professional Experience</h2>
+                <div class="w-20 h-1 bg-blue-500 mx-auto"></div>
+                <p class="text-gray-600 mt-4 max-w-2xl mx-auto">My journey in dentistry and commitment to patient care</p>
+            </div>
+            <div class="max-w-3xl mx-auto">
+                <!-- Timeline Item 1 -->
+                <div class="relative pl-16 pb-12 timeline-item">
+                    <div class="absolute left-0 top-0 w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-1">Owner & Lead Dentist</h3>
+                    <p class="text-gray-600 mb-2">Smith Dental Arts | 2018 - Present</p>
+                    <p class="text-gray-700">Founded and operate a boutique dental practice specializing in cosmetic and restorative dentistry. Implemented digital workflows including intraoral scanning, 3D printing, and CAD/CAM technology.</p>
+                </div>
+                
+                <!-- Timeline Item 2 -->
+                <div class="relative pl-16 pb-12 timeline-item">
+                    <div class="absolute left-0 top-0 w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white">
+                        <i class="fas fa-hospital"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-1">Associate Dentist</h3>
+                    <p class="text-gray-600 mb-2">Metropolitan Dental Group | 2014 - 2018</p>
+                    <p class="text-gray-700">Provided comprehensive dental care in a multi-specialty group practice. Focused on cosmetic dentistry, implants, and complex restorative cases. Mentored dental students from local universities.</p>
+                </div>
+                
+                <!-- Timeline Item 3 -->
+                <div class="relative pl-16 pb-12 timeline-item">
+                    <div class="absolute left-0 top-0 w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white">
+                        <i class="fas fa-clinic-medical"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-1">Dental Resident</h3>
+                    <p class="text-gray-600 mb-2">Boston Medical Center | 2012 - 2014</p>
+                    <p class="text-gray-700">Advanced training in hospital dentistry with rotations in oral surgery, pediatric dentistry, and emergency dental care. Provided care for medically complex patients.</p>
+                </div>
+                
+                <!-- Timeline Item 4 -->
+                <div class="relative pl-16 timeline-item">
+                    <div class="absolute left-0 top-0 w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-1">Dental School</h3>
+                    <p class="text-gray-600 mb-2">Harvard School of Dental Medicine | 2008 - 2012</p>
+                    <p class="text-gray-700">Doctor of Dental Medicine (DMD) degree with honors. Research focused on biomaterials for dental restorations. President of the Student Dental Association.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-20 bg-blue-500 text-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold mb-4">Patient Testimonials</h2>
+                <div class="w-20 h-1 bg-white mx-auto"></div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="bg-white bg-opacity-10 p-8 rounded-xl backdrop-filter backdrop-blur-sm">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-400 text-xl">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="mb-6 italic">"Dr. Smith transformed my smile with veneers. The results are incredible - natural looking but so much better than before. The entire process was comfortable and professional."</p>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/women/43.jpg" alt="Sarah J." class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-semibold">Sarah J.</h4>
+                            <p class="text-blue-100 text-sm">Invisalign Patient</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="bg-white bg-opacity-10 p-8 rounded-xl backdrop-filter backdrop-blur-sm">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-400 text-xl">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="mb-6 italic">"After avoiding the dentist for years due to anxiety, Dr. Smith made me feel completely at ease. The sedation option allowed me to get all my needed work done in just two visits."</p>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael T." class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-semibold">Michael T.</h4>
+                            <p class="text-blue-100 text-sm">Sedation Patient</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="bg-white bg-opacity-10 p-8 rounded-xl backdrop-filter backdrop-blur-sm">
+                    <div class="flex items-center mb-4">
+                        <div class="text-yellow-400 text-xl">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                    <p class="mb-6 italic">"The dental implant changed my life. I can eat anything again and smile with confidence. Dr. Smith's expertise is evident in every aspect of her work and patient care."</p>
+                    <div class="flex items-center">
+                        <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Lisa M." class="w-12 h-12 rounded-full mr-4">
+                        <div>
+                            <h4 class="font-semibold">Lisa M.</h4>
+                            <p class="text-blue-100 text-sm">Implant Patient</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Get In Touch</h2>
+                <div class="w-20 h-1 bg-blue-500 mx-auto"></div>
+                <p class="text-gray-600 mt-4 max-w-2xl mx-auto">Schedule a consultation or ask about my services</p>
+            </div>
+            <div class="flex flex-col md:flex-row">
+                <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
+                    <div class="bg-gray-50 p-8 rounded-xl">
+                        <h3 class="text-xl font-semibold text-gray-800 mb-6">Contact Information</h3>
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-map-marker-alt text-blue-500"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-800">Office Location</h4>
+                                    <p class="text-gray-600">123 Dental Avenue, Suite 400<br>Boston, MA 02115</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-phone-alt text-blue-500"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-800">Phone</h4>
+                                    <p class="text-gray-600">(617) 555-0123</p>
+                                    <p class="text-sm text-gray-500">Mon-Fri, 8:00 AM - 5:00 PM</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <div class="bg-blue-100 p-3 rounded-full mr-4">
+                                    <i class="fas fa-envelope text-blue-500"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium text-gray-800">Email</h4>
+                                    <p class="text-gray-600">dr.smith@dentalcv.com</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-8">
+                            <h4 class="font-medium text-gray-800 mb-4">Follow Me</h4>
+                            <div class="flex space-x-4">
+                                <a href="#" class="bg-blue-100 w-10 h-10 rounded-full flex items-center justify-center text-blue-500 hover:bg-blue-500 hover:text-white transition">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                <a href="#" class="bg-blue-100 w-10 h-10 rounded-full flex items-center justify-center text-blue-500 hover:bg-blue-500 hover:text-white transition">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="#" class="bg-blue-100 w-10 h-10 rounded-full flex items-center justify-center text-blue-500 hover:bg-blue-500 hover:text-white transition">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="#" class="bg-blue-100 w-10 h-10 rounded-full flex items-center justify-center text-blue-500 hover:bg-blue-500 hover:text-white transition">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-1/2">
+                    <form class="bg-gray-50 p-8 rounded-xl">
+                        <div class="mb-6">
+                            <label for="name" class="block text-gray-700 mb-2">Full Name</label>
+                            <input type="text" id="name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="John Doe">
+                        </div>
+                        <div class="mb-6">
+                            <label for="email" class="block text-gray-700 mb-2">Email Address</label>
+                            <input type="email" id="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="john@example.com">
+                        </div>
+                        <div class="mb-6">
+                            <label for="phone" class="block text-gray-700 mb-2">Phone Number</label>
+                            <input type="tel" id="phone" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="(123) 456-7890">
+                        </div>
+                        <div class="mb-6">
+                            <label for="service" class="block text-gray-700 mb-2">Service Interested In</label>
+                            <select id="service" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                                <option value="">Select a service</option>
+                                <option value="whitening">Teeth Whitening</option>
+                                <option value="implants">Dental Implants</option>
+                                <option value="invisalign">Invisalign</option>
+                                <option value="veneers">Porcelain Veneers</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="mb-6">
+                            <label for="message" class="block text-gray-700 mb-2">Message</label>
+                            <textarea id="message" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent" placeholder="Your message..."></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-blue-500 text-white py-3 px-6 rounded-lg hover:bg-blue-600 transition focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between">
+                <div class="mb-8 md:mb-0">
+                    <div class="flex items-center space-x-2 mb-4">
+                        <i class="fas fa-tooth text-2xl text-blue-400"></i>
+                        <span class="text-xl font-bold">Dr. Smith</span>
+                    </div>
+                    <p class="text-gray-400 max-w-xs">Providing exceptional dental care with a focus on patient comfort and cutting-edge techniques.</p>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-8">
+                    <div>
+                        <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#about" class="text-gray-400 hover:text-white transition">About</a></li>
+                            <li><a href="#treatments" class="text-gray-400 hover:text-white transition">Treatments</a></li>
+                            <li><a href="#courses" class="text-gray-400 hover:text-white transition">Courses</a></li>
+                            <li><a href="#experience" class="text-gray-400 hover:text-white transition">Experience</a></li>
+                            <li><a href="#contact" class="text-gray-400 hover:text-white transition">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-semibold mb-4">Services</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-gray-400 hover:text-white transition">Cosmetic Dentistry</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition">Dental Implants</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition">Invisalign</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition">Teeth Whitening</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition">Preventive Care</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-semibold mb-4">Legal</h4>
+                        <ul class="space-y-2">
+                            <li><a href="#" class="text-gray-400 hover:text-white transition">Privacy Policy</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition">Terms of Service</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-white transition">HIPAA Compliance</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 mb-4 md:mb-0">© 2023 Dr. Simon Babazadeh Dental CV. All rights reserved.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+
+        // Form submission (would be replaced with actual form handling in production)
+        const contactForm = document.querySelector('form');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Thank you for your message! We will contact you shortly.');
+                this.reset();
+            });
+        }
+
+        // Animate elements when they come into view
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fadeIn');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.treatment-card, .course-card, .timeline-item').forEach(card => {
+            card.classList.add('opacity-0', 'transition-opacity', 'duration-500', 'ease-in-out');
+            observer.observe(card);
+        });
+    </script>
+<p style="border-radius: 8px; text-align: center; font-size: 12px; color: #fff; margin-top: 16px;position: fixed; left: 8px; bottom: 8px; z-index: 10; background: rgba(0, 0, 0, 0.8); padding: 4px 8px;">Made with <img src="https://enzostvs-deepsite.hf.space/logo.svg" alt="DeepSite Logo" style="width: 16px; height: 16px; vertical-align: middle;display:inline-block;margin-right:3px;filter:brightness(0) invert(1);"><a href="https://enzostvs-deepsite.hf.space" style="color: #fff;text-decoration: underline;" target="_blank" >DeepSite</a> - 🧬 <a href="https://enzostvs-deepsite.hf.space?remix=Pojai/dr-simon-babazadeh" style="color: #fff;text-decoration: underline;" target="_blank" >Remix</a></p></body>
 </html>

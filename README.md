@@ -1,10 +1,12 @@
 ---
-title: Dr Simon Babazadeh
-emoji: 👀
-colorFrom: yellow
-colorTo: pink
+title: dr-simon-babazadeh
+emoji: 🐳
+colorFrom: green
+colorTo: red
 sdk: static
 pinned: false
+tags:
+  - deepsite
 ---
 
 Check out the configuration reference at https://huggingface.co/docs/hub/spaces-config-reference
